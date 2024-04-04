@@ -17,22 +17,26 @@ namespace DesignPatternProjekt.ComponentPatterns
 
         public override void Awake()
         {
-            throw new NotImplementedException();
+            
         }
 
         public override void Start()
         {
-            
+            SpriteRenderer spriteRenderer = GameObject.GetComponent<SpriteRenderer>() as SpriteRenderer;
+            spriteRenderer.SetSprite("DesignPatternMap");
+
+            GameObject.Transform.Position = new Vector2(GameWorld.Instance.Graphics.PreferredBackBufferWidth / 2f, GameWorld.Instance.Graphics.PreferredBackBufferHeight - spriteRenderer.Sprite.Height * 2.2f);
+            GameObject.Transform.Scale = new Vector2(4f, 4f);
         }
 
         public override void Update(GameTime gameTime)
         {
-            throw new NotImplementedException();
+            
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

@@ -21,9 +21,10 @@ namespace DesignPatternProjekt
             Components = new List<Component>();
         }
 
-        public void AddComponent(Component component)
+        public Component AddComponent(Component component)
         {
             Components.Add(component);
+            return component;
         }
 
         public void RemoveComponent(Component component)
