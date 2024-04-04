@@ -6,7 +6,21 @@ using System.Threading.Tasks;
 
 namespace DesignPatternProjekt.CommandPatterns
 {
-    internal class ShootCommand
+    class ShootCommand : ICommand
     {
+        private Player player;
+        public ShootCommand(Player player)
+        {
+            this.player = player;
+        }
+        public void Execute()
+        {
+            player.Shoot();
+        }
+
+        public void Undo()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

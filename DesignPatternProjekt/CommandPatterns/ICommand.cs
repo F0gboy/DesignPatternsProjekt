@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace DesignPatternProjekt.CommandPatterns
 {
-    internal interface ICommand
+    interface ICommand
     {
+        void Execute();
+        void Undo();
     }
 }

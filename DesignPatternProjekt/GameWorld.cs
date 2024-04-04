@@ -6,8 +6,26 @@ namespace DesignPatternProjekt
 {
     public class GameWorld : Game
     {
+
+        private static GameWorld instance;
+
+        public static GameWorld Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new GameWorld();
+                }
+                return instance;
+            }
+        }
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+        private List<GameObject> gameObjects = new List<GameObject>();
+
+        public static float DeltaTime { get; private set; }
+        public GraphicsDeviceManager Graphics { get => _graphics; set => _graphics = value; }
 
         public GameWorld()
         {
@@ -19,6 +37,14 @@ namespace DesignPatternProjekt
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            GameObject playerGo = new GameObject();
+            Player player = playerGo.AddComponent<Player>();
+            playerGo.AddComponent<SpriteRenderer>();
+            gameObjects.Add(playerGo);
+            foreach (GameObject go in gameObjects)
+            {
+                go.Awake();
+            }
 
             base.Initialize();
         }
@@ -28,6 +54,10 @@ namespace DesignPatternProjekt
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            foreach (GameObject go in gameObjects)
+            {
+                go.Start();
+            }
         }
 
         protected override void Update(GameTime gameTime)
@@ -36,6 +66,12 @@ namespace DesignPatternProjekt
                 Exit();
 
             // TODO: Add your update logic here
+            DeltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            foreach (GameObject go in gameObjects)
+            {
+                go.Update(gameTime);
+            }
+            InputHandler.Instance.Execute();
 
             base.Update(gameTime);
         }
@@ -45,6 +81,14 @@ namespace DesignPatternProjekt
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+            _spriteBatch.Begin();
+
+            foreach (GameObject go in gameObjects)
+            {
+                go.Draw(_spriteBatch);
+            }
+
+            _spriteBatch.End();
 
             base.Draw(gameTime);
         }
