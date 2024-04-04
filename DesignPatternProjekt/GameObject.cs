@@ -5,13 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using DesignPatternProjekt.ComponentPatterns;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace DesignPatternProjekt
 {
     internal class GameObject
     {
-        
+        public Transform Transform { get; private set; } = new Transform();
+
         public List<Component> Components { get; private set; }
 
         public GameObject()

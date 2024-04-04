@@ -2,11 +2,27 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace DesignPatternProjekt
 {
     public class GameWorld : Game
     {
+        private static GameWorld instance;
+
+        public static GameWorld Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    Debug.WriteLine("hello");
+                    instance = new GameWorld();
+                }
+                return instance;
+            }
+        }
+
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 

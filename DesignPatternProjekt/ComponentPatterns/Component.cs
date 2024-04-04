@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework.Content;
 
 namespace DesignPatternProjekt.ComponentPatterns
 {
@@ -24,7 +25,7 @@ namespace DesignPatternProjekt.ComponentPatterns
 
         public virtual void Start()
         {
-
+            
         }
 
         public virtual void Update(GameTime gameTime)
