@@ -14,9 +14,11 @@ namespace DesignPatternProjekt.ComponentPatterns
         public Rectangle outerRec;
         public Rectangle innerRec;
         public Texture2D recTexture;
+        private GraphicsDeviceManager graphicsDeviceManager;
 
         public Map(GameObject gameObject, GraphicsDeviceManager graphics) : base(gameObject)
         {
+            this.graphicsDeviceManager = graphics;
         }
 
         public override void Awake()
@@ -29,8 +31,7 @@ namespace DesignPatternProjekt.ComponentPatterns
             SpriteRenderer spriteRenderer = GameObject.GetComponent<SpriteRenderer>() as SpriteRenderer;
             spriteRenderer.SetSprite("DesignPatternMap");
 
-
-            //recTexture = new Texture2D(graphics.GraphicsDevice, 80, 30);
+            recTexture = new Texture2D(graphicsDeviceManager.GraphicsDevice, 80, 30);
 
             GameObject.Transform.Position = new Vector2(GameWorld.Instance.Graphics.PreferredBackBufferWidth / 2f, GameWorld.Instance.Graphics.PreferredBackBufferHeight - spriteRenderer.Sprite.Height * 2.2f);
             GameObject.Transform.Scale = new Vector2(4f, 4f);
@@ -43,7 +44,7 @@ namespace DesignPatternProjekt.ComponentPatterns
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            //SpriteBatch.Draw(recTexture, new Rectangle(100, 100, 100, 100), Color.White);
+            spriteBatch.Draw(recTexture, new Rectangle(100, 100, 100, 100), Color.White);
         }
     }
 }
