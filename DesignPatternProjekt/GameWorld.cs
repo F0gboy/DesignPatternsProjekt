@@ -1,6 +1,9 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Fortress.Command;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
 
 namespace DesignPatternProjekt
 {
@@ -20,16 +23,26 @@ namespace DesignPatternProjekt
                 return instance;
             }
         }
+
         private GraphicsDeviceManager _graphics;
+
         private SpriteBatch _spriteBatch;
+
         private List<GameObject> gameObjects = new List<GameObject>();
 
-        public static float DeltaTime { get; private set; }
-        public GraphicsDeviceManager Graphics { get => _graphics; set => _graphics = value; }
+        private List<GameObject> newGameObjects = new List<GameObject>();
 
-        public GameWorld()
+        private List<GameObject> destroyedGameObjects = new List<GameObject>();
+        public float DeltaTime { get; private set; }
+
+
+        public GraphicsDeviceManager Graphics { get => _graphics; set => _graphics = value; }
+        private Fortress player;
+        private Laser laser;
+
+        private GameWorld()
         {
-            _graphics = new GraphicsDeviceManager(this);
+            Graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
         }
@@ -38,13 +51,17 @@ namespace DesignPatternProjekt
         {
             // TODO: Add your initialization logic here
             GameObject playerGo = new GameObject();
-            Player player = playerGo.AddComponent<Player>();
+            player = playerGo.AddComponent<Fortress>();
             playerGo.AddComponent<SpriteRenderer>();
             gameObjects.Add(playerGo);
             foreach (GameObject go in gameObjects)
             {
                 go.Awake();
             }
+
+
+            InputHandler.Instance.AddButtonDownCommand(Keys.Space, new ShootCommand(player));
+
 
             base.Initialize();
         }
@@ -53,7 +70,6 @@ namespace DesignPatternProjekt
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
             foreach (GameObject go in gameObjects)
             {
                 go.Start();
@@ -65,22 +81,26 @@ namespace DesignPatternProjekt
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
             DeltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             foreach (GameObject go in gameObjects)
             {
                 go.Update(gameTime);
             }
-            InputHandler.Instance.Execute();
 
+            player.Rotation();
+
+
+            InputHandler.Instance.Execute();
             base.Update(gameTime);
+
+            Cleanup();
+
         }
 
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
             _spriteBatch.Begin();
 
             foreach (GameObject go in gameObjects)
@@ -91,6 +111,32 @@ namespace DesignPatternProjekt
             _spriteBatch.End();
 
             base.Draw(gameTime);
+
+        }
+        private void Cleanup()
+        {
+            for (int i = 0; i < newGameObjects.Count; i++)
+            {
+                gameObjects.Add(newGameObjects[i]);
+                newGameObjects[i].Awake();
+                newGameObjects[i].Start();
+            }
+
+            for (int i = 0; i < destroyedGameObjects.Count; i++)
+            {
+                gameObjects.Remove(destroyedGameObjects[i]);
+            }
+            destroyedGameObjects.Clear();
+            newGameObjects.Clear();
+        }
+        public void Instantiate(GameObject go)
+        {
+            newGameObjects.Add(go);
+        }
+
+        public void Destroy(GameObject go)
+        {
+            destroyedGameObjects.Add(go);
         }
     }
 }

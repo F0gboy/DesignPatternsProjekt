@@ -2,9 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\DesignPatternProjekt",
-    "\\DesignPatternProjekt\\ComponentPatterns",
-    "\\DesignPatternProjekt\\FactoryPatterns"
+    "\\DesignPatternProjekt\\CommandPatterns",
+    "\\DesignPatternProjekt\\ComponentPatterns"
   ],
-  "SelectedNode": "\\DesignPatternProjekt\\ComponentPatterns\\Fortress.cs",
+  "SelectedNode": "\\DesignPatternProjekt\\GameObject.cs",
   "PreviewInSolutionExplorer": false
 }

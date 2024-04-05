@@ -1,3 +1,4 @@
 ﻿
-using var game = new DesignPatternProjekt.GameWorld();
-game.Run();
+using DesignPatternProjekt;
+
+GameWorld.Instance.Run();

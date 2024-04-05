@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DesignPatternProjekt.CommandPatterns
+
+namespace DesignPatternProjekt
 {
     class ShootCommand : ICommand
     {
-        private Player player;
-        public ShootCommand(Player player)
+        private Fortress player;
+        public ShootCommand(Fortress player)
         {
             this.player = player;
         }

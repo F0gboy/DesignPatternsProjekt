@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DesignPatternProjekt.ComponentPatterns
+namespace DesignPatternProjekt
 {
     public abstract class Component
     {
@@ -33,6 +35,16 @@ namespace DesignPatternProjekt.ComponentPatterns
         public virtual void Draw(SpriteBatch spriteBatch)
         {
 
+        }
+        public virtual object Clone()
+        {
+            Component component = (Component)MemberwiseClone();
+            component.GameObject = GameObject;
+            return component;
+        }
+        public virtual void SetNewGameObject(GameObject gameObject)
+        {
+            this.GameObject = gameObject;
         }
     }
 }
