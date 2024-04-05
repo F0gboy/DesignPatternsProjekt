@@ -8,5 +8,6 @@ namespace DesignPatternProjekt.CommandPatterns
 {
     internal interface ICommand
     {
+        void Execute();
     }
 }

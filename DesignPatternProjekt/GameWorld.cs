@@ -10,6 +10,9 @@ namespace DesignPatternProjekt
     public class GameWorld : Game
     {
         private static GameWorld instance;
+        public Dictionary<string, Texture2D> sprites { get; private set; }
+        public static SpriteFont font;
+        private List<UIComponent> uiComponents = new List<UIComponent>();
 
         public static GameWorld Instance
         {
@@ -17,7 +20,6 @@ namespace DesignPatternProjekt
             {
                 if (instance == null)
                 {
-                    Debug.WriteLine("hello");
                     instance = new GameWorld();
                 }
                 return instance;
@@ -30,13 +32,11 @@ namespace DesignPatternProjekt
 
         private List<GameObject> gameObjects = new List<GameObject>();
 
-        public GameWorld()
+        private GameWorld()
         {
-            Graphics = new GraphicsDeviceManager(this);
-            Graphics.PreferredBackBufferHeight = 1080;
-            Graphics.PreferredBackBufferWidth = 1920;
-
+            _graphics = new(this) { PreferredBackBufferWidth = 1920, PreferredBackBufferHeight = 1080 };
             Content.RootDirectory = "Content";
+            _graphics.IsFullScreen = true;
             IsMouseVisible = true;
         }
 
@@ -53,6 +53,7 @@ namespace DesignPatternProjekt
             {
                 go.Awake();
             }
+            GameState.OnChangeState += ChangeState;
 
             base.Initialize();
         }
@@ -67,6 +68,15 @@ namespace DesignPatternProjekt
             {
                 go.Start();
             }
+            
+            font = Content.Load<SpriteFont>("Font");
+
+            sprites = new Dictionary<string, Texture2D>()
+            {
+                { "NineSlice", Content.Load<Texture2D>("Sprites/NineSlice") }
+            };
+
+            GameState.CurrentState = GameStates.StartMenu;
         }
 
         protected override void Update(GameTime gameTime)
@@ -80,6 +90,9 @@ namespace DesignPatternProjekt
             }
 
             // TODO: Add your update logic here
+            foreach (var uiComponent in uiComponents) {
+                uiComponent.Update(gameTime);
+            }
 
             base.Update(gameTime);
         }
@@ -94,11 +107,41 @@ namespace DesignPatternProjekt
             {
                 go.Draw(_spriteBatch);
             }
+            
+            foreach (var uiComponent in uiComponents) {
+                uiComponent.Draw(gameTime, _spriteBatch);
+            }
             // TODO: Add your drawing code here
 
             _spriteBatch.End();
 
             base.Draw(gameTime);
+        }
+
+        private void ChangeState() 
+        {
+            uiComponents.Clear();
+
+            switch (GameState.CurrentState)
+            {
+                 case GameStates.StartMenu:
+                    uiComponents.Add(
+                        new Button()
+                        {
+                            rect = new Rectangle(500, 500, 200, 100),
+                            text = "Hello"
+                        }
+                    );
+                    break;
+                case GameStates.KeybindMenu:
+                    break;
+                case GameStates.OptionMenu:
+                    break;
+                case GameStates.Playing:
+                    break;
+                case GameStates.Paused:
+                    break;
+            }
         }
     }
 }
