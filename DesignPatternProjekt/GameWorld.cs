@@ -3,6 +3,8 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
+using System.Diagnostics;
+using DesignPatternProjekt.ComponentPatterns;
 
 namespace DesignPatternProjekt
 {
@@ -17,6 +19,7 @@ namespace DesignPatternProjekt
             {
                 if (instance == null)
                 {
+                    Debug.WriteLine("hello");
                     instance = new GameWorld();
                 }
                 return instance;
@@ -26,6 +29,9 @@ namespace DesignPatternProjekt
         private GraphicsDeviceManager _graphics;
 
         private SpriteBatch _spriteBatch;
+        public GraphicsDeviceManager Graphics { get => _graphics; set => _graphics = value; }
+
+        private List<GameObject> gameObjects = new List<GameObject>();
 
         private List<GameObject> gameObjects = new List<GameObject>();
 
@@ -42,6 +48,9 @@ namespace DesignPatternProjekt
         private GameWorld()
         {
             Graphics = new GraphicsDeviceManager(this);
+            Graphics.PreferredBackBufferHeight = 1080;
+            Graphics.PreferredBackBufferWidth = 1920;
+
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
         }
@@ -49,6 +58,12 @@ namespace DesignPatternProjekt
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            
+            GameObject map = new GameObject();
+            map.AddComponent(new Map(map));
+            map.AddComponent(new SpriteRenderer(map));
+            gameObjects.Add(map);
+
             GameObject playerGo = new GameObject();
             player = playerGo.AddComponent<Fortress>();
             playerGo.AddComponent<SpriteRenderer>();
@@ -100,12 +115,13 @@ namespace DesignPatternProjekt
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            _spriteBatch.Begin();
+            _spriteBatch.Begin(samplerState: SamplerState.PointClamp);
 
             foreach (GameObject go in gameObjects)
             {
                 go.Draw(_spriteBatch);
             }
+            // TODO: Add your drawing code here
 
             _spriteBatch.End();
 

@@ -1,4 +1,14 @@
-﻿
+﻿using System;
 using DesignPatternProjekt;
 
-GameWorld.Instance.Run();
+namespace DesignPatternProjekt
+{
+    public static class Program
+    {
+        [STAThread]
+        static void Main()
+        {
+            GameWorld.Instance.Run();
+        }
+    }
+}
