@@ -40,15 +40,15 @@ namespace DesignPatternProjekt.FactoryPatterns
             {
                 case ENEMYTYPE.SLOW:
                     sr.SetSprite("enemyBlue2");
-                    go.AddComponent<Enemy>();
+                    go.AddComponent<Enemy>(50f);
                     break;
                 case ENEMYTYPE.FAST:
                     sr.SetSprite("enemyGreen3");
-                    go.AddComponent<Enemy>();
+                    go.AddComponent<Enemy>(100f);
                     break;
                 case ENEMYTYPE.STRONG:
                     sr.SetSprite("enemyRed4");
-                    go.AddComponent<Enemy>();
+                    go.AddComponent<Enemy>(150f);
 
                     break;
             }
