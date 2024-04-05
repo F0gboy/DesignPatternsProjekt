@@ -29,6 +29,7 @@ namespace DesignPatternProjekt
         }
 
         private GraphicsDeviceManager _graphics;
+
         private SpriteBatch _spriteBatch;
         public GraphicsDeviceManager Graphics { get => _graphics; set => _graphics = value; }
 
@@ -51,10 +52,18 @@ namespace DesignPatternProjekt
             map.AddComponent<SpriteRenderer>();
             gameObjects.Add(map);
 
+            GameObject playerGo = new GameObject();
+            player = playerGo.AddComponent<Fortress>();
+            playerGo.AddComponent<SpriteRenderer>();
+            gameObjects.Add(playerGo);
             foreach (GameObject go in gameObjects)
             {
                 go.Awake();
             }
+
+
+            InputHandler.Instance.AddButtonDownCommand(Keys.Space, new ShootCommand(player));
+
             GameState.OnChangeState += ChangeState;
 
             //for (int i = 0; i < 7; i++)
@@ -88,8 +97,6 @@ namespace DesignPatternProjekt
             EnemyFactory.SpawnEnemiesWithDelay(ENEMYTYPE.FAST, 3, 2f, 4f);
             EnemyFactory.SpawnEnemiesWithDelay(ENEMYTYPE.STRONG, 2, 3f, 5f);
 
-            // TODO: use this.Content to load your game content here
-
             foreach (GameObject go in gameObjects)
             {
                 go.Start();
@@ -119,7 +126,14 @@ namespace DesignPatternProjekt
                 uiComponent.Update(gameTime);
             }
 
+            player.Rotation();
+
+
+            InputHandler.Instance.Execute();
             base.Update(gameTime);
+
+            Cleanup();
+
         }
 
         protected override void Draw(GameTime gameTime)
@@ -141,6 +155,32 @@ namespace DesignPatternProjekt
             _spriteBatch.End();
 
             base.Draw(gameTime);
+
+        }
+        private void Cleanup()
+        {
+            for (int i = 0; i < newGameObjects.Count; i++)
+            {
+                gameObjects.Add(newGameObjects[i]);
+                newGameObjects[i].Awake();
+                newGameObjects[i].Start();
+            }
+
+            for (int i = 0; i < destroyedGameObjects.Count; i++)
+            {
+                gameObjects.Remove(destroyedGameObjects[i]);
+            }
+            destroyedGameObjects.Clear();
+            newGameObjects.Clear();
+        }
+        public void Instantiate(GameObject go)
+        {
+            newGameObjects.Add(go);
+        }
+
+        public void Destroy(GameObject go)
+        {
+            destroyedGameObjects.Add(go);
         }
 
         private void ChangeState() 

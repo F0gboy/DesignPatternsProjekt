@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DesignPatternProjekt.FactoryPatterns
+namespace DesignPatternProjekt
 {
-    internal abstract class Factory
+    public abstract class Factory
     {
         public abstract GameObject Create();
     }

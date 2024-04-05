@@ -4,10 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DesignPatternProjekt.CommandPatterns
+
+
+namespace DesignPatternProjekt
 {
-    internal interface ICommand
+    interface ICommand
     {
         void Execute();
-    }
+        void Undo();
+    }   
 }

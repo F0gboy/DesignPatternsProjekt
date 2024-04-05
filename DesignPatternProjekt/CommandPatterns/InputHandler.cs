@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DesignPatternProjekt.CommandPatterns
+namespace DesignPatternProjekt
 {
     class InputHandler
     {
@@ -15,35 +15,75 @@ namespace DesignPatternProjekt.CommandPatterns
             get
             {
                 if (instance == null)
-                {
                     instance = new InputHandler();
-                }
                 return instance;
             }
         }
-        private InputHandler()
+        private InputHandler() { }
+        private Dictionary<Keys, ICommand> keybindsUpdate = new Dictionary<Keys, ICommand>();
+        private Dictionary<Keys, ICommand> keybindsButtonDown = new Dictionary<Keys, ICommand>();
+        private Stack<ICommand> executedCommands = new Stack<ICommand>();
+        private Stack<ICommand> undoneCommands = new Stack<ICommand>();
+        public void AddUpdateCommand(Keys inputKey, ICommand command)
         {
-
+            keybindsUpdate.Add(inputKey, command);
         }
 
-        private Dictionary<Keys, ICommand> keybinds = new Dictionary<Keys, ICommand>();
-
-        public void AddCommand(Keys inputKey, ICommand command)
+        public void AddButtonDownCommand(Keys inputKey, ICommand command)
         {
-            keybinds.Add(inputKey, command);
+            keybindsButtonDown.Add(inputKey, command);
         }
-
+        private KeyboardState previousKeyState;
         public void Execute()
         {
             KeyboardState keyState = Keyboard.GetState();
 
             foreach (var pressedKey in keyState.GetPressedKeys())
             {
-                if (keybinds.TryGetValue(pressedKey, out ICommand cmd))
+                if (keybindsUpdate.TryGetValue(pressedKey, out ICommand cmd))
                 {
                     cmd.Execute();
                 }
+                if (!previousKeyState.IsKeyDown(pressedKey) && keyState.IsKeyDown(pressedKey))
+                {
+                    if (keybindsButtonDown.TryGetValue(pressedKey, out ICommand cmdBd))
+                    {
+                        cmdBd.Execute();
+                        executedCommands.Push(cmdBd);
+                        undoneCommands.Clear();
+                    }
+
+                    if (pressedKey == Keys.O)
+                    {
+                        Redo();
+                    }
+                    if (pressedKey == Keys.P)
+                    {
+                        Undo();
+                    }
+                }
+            }
+            previousKeyState = keyState;
+        }
+
+        private void Undo()
+        {
+            if (executedCommands.Count > 0)
+            {
+                ICommand commandToUndo = executedCommands.Pop();
+                commandToUndo.Undo();
+                undoneCommands.Push(commandToUndo);
             }
         }
-    }
+
+        public void Redo()
+        {
+            if (undoneCommands.Count > 0)
+            {
+                ICommand commandToRedo = undoneCommands.Pop();
+                commandToRedo.Execute();
+                executedCommands.Push(commandToRedo);
+            }
+        }
+    }   
 }

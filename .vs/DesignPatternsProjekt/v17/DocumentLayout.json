@@ -1,0 +1,286 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\lepsk\\source\\repos\\DesignPatternsProjekt\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\lepsk\\source\\repos\\DesignPatternsProjekt\\DesignPatternProjekt\\GameWorld.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DesignPatternProjekt\\GameWorld.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\lepsk\\source\\repos\\DesignPatternsProjekt\\DesignPatternProjekt\\ComponentPatterns\\Fortress.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DesignPatternProjekt\\ComponentPatterns\\Fortress.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\lepsk\\source\\repos\\DesignPatternsProjekt\\DesignPatternProjekt\\ComponentPatterns\\Component.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DesignPatternProjekt\\ComponentPatterns\\Component.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\lepsk\\source\\repos\\DesignPatternsProjekt\\DesignPatternProjekt\\CommandPatterns\\ShootCommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DesignPatternProjekt\\CommandPatterns\\ShootCommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\lepsk\\source\\repos\\DesignPatternsProjekt\\DesignPatternProjekt\\CommandPatterns\\MoveCommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DesignPatternProjekt\\CommandPatterns\\MoveCommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\lepsk\\source\\repos\\DesignPatternsProjekt\\DesignPatternProjekt\\CommandPatterns\\InputHandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DesignPatternProjekt\\CommandPatterns\\InputHandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\lepsk\\source\\repos\\DesignPatternsProjekt\\DesignPatternProjekt\\CommandPatterns\\ICommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DesignPatternProjekt\\CommandPatterns\\ICommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\lepsk\\source\\repos\\DesignPatternsProjekt\\DesignPatternProjekt\\Transform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DesignPatternProjekt\\Transform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\lepsk\\source\\repos\\DesignPatternsProjekt\\DesignPatternProjekt\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DesignPatternProjekt\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\lepsk\\source\\repos\\DesignPatternsProjekt\\DesignPatternProjekt\\FactoryPatterns\\LaserFactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DesignPatternProjekt\\FactoryPatterns\\LaserFactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\lepsk\\source\\repos\\DesignPatternsProjekt\\DesignPatternProjekt\\FactoryPatterns\\Factory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DesignPatternProjekt\\FactoryPatterns\\Factory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\lepsk\\source\\repos\\DesignPatternsProjekt\\DesignPatternProjekt\\ComponentPatterns\\SpriteRenderer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DesignPatternProjekt\\ComponentPatterns\\SpriteRenderer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\lepsk\\source\\repos\\DesignPatternsProjekt\\DesignPatternProjekt\\ComponentPatterns\\Laser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DesignPatternProjekt\\ComponentPatterns\\Laser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\lepsk\\source\\repos\\DesignPatternsProjekt\\DesignPatternProjekt\\ComponentPatterns\\GameObject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DesignPatternProjekt\\ComponentPatterns\\GameObject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\lepsk\\source\\repos\\DesignPatternsProjekt\\DesignPatternProjekt\\GameObject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DesignPatternProjekt\\GameObject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 16,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "GameObject.cs",
+              "DocumentMoniker": "C:\\Users\\lepsk\\source\\repos\\DesignPatternsProjekt\\DesignPatternProjekt\\ComponentPatterns\\GameObject.cs",
+              "RelativeDocumentMoniker": "DesignPatternProjekt\\ComponentPatterns\\GameObject.cs",
+              "ToolTip": "C:\\Users\\lepsk\\source\\repos\\DesignPatternsProjekt\\DesignPatternProjekt\\ComponentPatterns\\GameObject.cs",
+              "RelativeToolTip": "DesignPatternProjekt\\ComponentPatterns\\GameObject.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-05T06:08:23.36Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Laser.cs",
+              "DocumentMoniker": "C:\\Users\\lepsk\\source\\repos\\DesignPatternsProjekt\\DesignPatternProjekt\\ComponentPatterns\\Laser.cs",
+              "RelativeDocumentMoniker": "DesignPatternProjekt\\ComponentPatterns\\Laser.cs",
+              "ToolTip": "C:\\Users\\lepsk\\source\\repos\\DesignPatternsProjekt\\DesignPatternProjekt\\ComponentPatterns\\Laser.cs",
+              "RelativeToolTip": "DesignPatternProjekt\\ComponentPatterns\\Laser.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-05T06:07:48.001Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Factory.cs",
+              "DocumentMoniker": "C:\\Users\\lepsk\\source\\repos\\DesignPatternsProjekt\\DesignPatternProjekt\\FactoryPatterns\\Factory.cs",
+              "RelativeDocumentMoniker": "DesignPatternProjekt\\FactoryPatterns\\Factory.cs",
+              "ToolTip": "C:\\Users\\lepsk\\source\\repos\\DesignPatternsProjekt\\DesignPatternProjekt\\FactoryPatterns\\Factory.cs",
+              "RelativeToolTip": "DesignPatternProjekt\\FactoryPatterns\\Factory.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-05T06:05:03.72Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "LaserFactory.cs",
+              "DocumentMoniker": "C:\\Users\\lepsk\\source\\repos\\DesignPatternsProjekt\\DesignPatternProjekt\\FactoryPatterns\\LaserFactory.cs",
+              "RelativeDocumentMoniker": "DesignPatternProjekt\\FactoryPatterns\\LaserFactory.cs",
+              "ToolTip": "C:\\Users\\lepsk\\source\\repos\\DesignPatternsProjekt\\DesignPatternProjekt\\FactoryPatterns\\LaserFactory.cs",
+              "RelativeToolTip": "DesignPatternProjekt\\FactoryPatterns\\LaserFactory.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-05T06:04:50.153Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\lepsk\\source\\repos\\DesignPatternsProjekt\\DesignPatternProjekt\\Program.cs",
+              "RelativeDocumentMoniker": "DesignPatternProjekt\\Program.cs",
+              "ToolTip": "C:\\Users\\lepsk\\source\\repos\\DesignPatternsProjekt\\DesignPatternProjekt\\Program.cs",
+              "RelativeToolTip": "DesignPatternProjekt\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-05T06:01:17.9Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "GameObject.cs",
+              "DocumentMoniker": "C:\\Users\\lepsk\\source\\repos\\DesignPatternsProjekt\\DesignPatternProjekt\\GameObject.cs",
+              "RelativeDocumentMoniker": "DesignPatternProjekt\\GameObject.cs",
+              "ToolTip": "C:\\Users\\lepsk\\source\\repos\\DesignPatternsProjekt\\DesignPatternProjekt\\GameObject.cs",
+              "RelativeToolTip": "DesignPatternProjekt\\GameObject.cs",
+              "ViewState": "AQIAAC0AAAAAAAAAAAAAAE8AAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-04T08:07:30.478Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MoveCommand.cs",
+              "DocumentMoniker": "C:\\Users\\lepsk\\source\\repos\\DesignPatternsProjekt\\DesignPatternProjekt\\CommandPatterns\\MoveCommand.cs",
+              "RelativeDocumentMoniker": "DesignPatternProjekt\\CommandPatterns\\MoveCommand.cs",
+              "ToolTip": "C:\\Users\\lepsk\\source\\repos\\DesignPatternsProjekt\\DesignPatternProjekt\\CommandPatterns\\MoveCommand.cs",
+              "RelativeToolTip": "DesignPatternProjekt\\CommandPatterns\\MoveCommand.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-04T07:54:36.325Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ShootCommand.cs",
+              "DocumentMoniker": "C:\\Users\\lepsk\\source\\repos\\DesignPatternsProjekt\\DesignPatternProjekt\\CommandPatterns\\ShootCommand.cs",
+              "RelativeDocumentMoniker": "DesignPatternProjekt\\CommandPatterns\\ShootCommand.cs",
+              "ToolTip": "C:\\Users\\lepsk\\source\\repos\\DesignPatternsProjekt\\DesignPatternProjekt\\CommandPatterns\\ShootCommand.cs",
+              "RelativeToolTip": "DesignPatternProjekt\\CommandPatterns\\ShootCommand.cs",
+              "ViewState": "AQIAABgAAAAAAAAAAAAAAAcAAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-03T15:28:00.712Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "InputHandler.cs",
+              "DocumentMoniker": "C:\\Users\\lepsk\\source\\repos\\DesignPatternsProjekt\\DesignPatternProjekt\\CommandPatterns\\InputHandler.cs",
+              "RelativeDocumentMoniker": "DesignPatternProjekt\\CommandPatterns\\InputHandler.cs",
+              "ToolTip": "C:\\Users\\lepsk\\source\\repos\\DesignPatternsProjekt\\DesignPatternProjekt\\CommandPatterns\\InputHandler.cs",
+              "RelativeToolTip": "DesignPatternProjekt\\CommandPatterns\\InputHandler.cs",
+              "ViewState": "AQIAAC0AAAAAAAAAAAAAAAoAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-03T15:26:45.972Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ICommand.cs",
+              "DocumentMoniker": "C:\\Users\\lepsk\\source\\repos\\DesignPatternsProjekt\\DesignPatternProjekt\\CommandPatterns\\ICommand.cs",
+              "RelativeDocumentMoniker": "DesignPatternProjekt\\CommandPatterns\\ICommand.cs",
+              "ToolTip": "C:\\Users\\lepsk\\source\\repos\\DesignPatternsProjekt\\DesignPatternProjekt\\CommandPatterns\\ICommand.cs",
+              "RelativeToolTip": "DesignPatternProjekt\\CommandPatterns\\ICommand.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-03T15:26:38.329Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "SpriteRenderer.cs",
+              "DocumentMoniker": "C:\\Users\\lepsk\\source\\repos\\DesignPatternsProjekt\\DesignPatternProjekt\\ComponentPatterns\\SpriteRenderer.cs",
+              "RelativeDocumentMoniker": "DesignPatternProjekt\\ComponentPatterns\\SpriteRenderer.cs",
+              "ToolTip": "C:\\Users\\lepsk\\source\\repos\\DesignPatternsProjekt\\DesignPatternProjekt\\ComponentPatterns\\SpriteRenderer.cs",
+              "RelativeToolTip": "DesignPatternProjekt\\ComponentPatterns\\SpriteRenderer.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-03T15:21:54.844Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Transform.cs",
+              "DocumentMoniker": "C:\\Users\\lepsk\\source\\repos\\DesignPatternsProjekt\\DesignPatternProjekt\\Transform.cs",
+              "RelativeDocumentMoniker": "DesignPatternProjekt\\Transform.cs",
+              "ToolTip": "C:\\Users\\lepsk\\source\\repos\\DesignPatternsProjekt\\DesignPatternProjekt\\Transform.cs",
+              "RelativeToolTip": "DesignPatternProjekt\\Transform.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-03T15:09:14.061Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Component.cs",
+              "DocumentMoniker": "C:\\Users\\lepsk\\source\\repos\\DesignPatternsProjekt\\DesignPatternProjekt\\ComponentPatterns\\Component.cs",
+              "RelativeDocumentMoniker": "DesignPatternProjekt\\ComponentPatterns\\Component.cs",
+              "ToolTip": "C:\\Users\\lepsk\\source\\repos\\DesignPatternsProjekt\\DesignPatternProjekt\\ComponentPatterns\\Component.cs",
+              "RelativeToolTip": "DesignPatternProjekt\\ComponentPatterns\\Component.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-03T15:03:32.056Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GameWorld.cs",
+              "DocumentMoniker": "C:\\Users\\lepsk\\source\\repos\\DesignPatternsProjekt\\DesignPatternProjekt\\GameWorld.cs",
+              "RelativeDocumentMoniker": "DesignPatternProjekt\\GameWorld.cs",
+              "ToolTip": "C:\\Users\\lepsk\\source\\repos\\DesignPatternsProjekt\\DesignPatternProjekt\\GameWorld.cs",
+              "RelativeToolTip": "DesignPatternProjekt\\GameWorld.cs",
+              "ViewState": "AQIAAGMAAAAAAAAAAAAAAAsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-03T13:28:57.777Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Fortress.cs",
+              "DocumentMoniker": "C:\\Users\\lepsk\\source\\repos\\DesignPatternsProjekt\\DesignPatternProjekt\\ComponentPatterns\\Fortress.cs",
+              "RelativeDocumentMoniker": "DesignPatternProjekt\\ComponentPatterns\\Fortress.cs",
+              "ToolTip": "C:\\Users\\lepsk\\source\\repos\\DesignPatternsProjekt\\DesignPatternProjekt\\ComponentPatterns\\Fortress.cs",
+              "RelativeToolTip": "DesignPatternProjekt\\ComponentPatterns\\Fortress.cs",
+              "ViewState": "AQIAACcAAAAAAAAAAAAAAAkAAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-03T13:13:36.353Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
