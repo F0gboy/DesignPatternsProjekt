@@ -66,3 +66,4 @@ artifacts/
 .vs
 DesignPatternProjekt/bin/Debug/net6.0/DesignPatternProjekt.dll
 .vs/DesignPatternProjekt/FileContentIndex
+DesignPatternProjekt/bin/Debug/net6.0

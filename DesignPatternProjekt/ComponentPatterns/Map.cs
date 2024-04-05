@@ -30,7 +30,7 @@ namespace DesignPatternProjekt.ComponentPatterns
             spriteRenderer.SetSprite("DesignPatternMap");
 
 
-            recTexture = new Texture2D(graphics.GraphicsDevice, 80, 30);
+            //recTexture = new Texture2D(graphics.GraphicsDevice, 80, 30);
 
             GameObject.Transform.Position = new Vector2(GameWorld.Instance.Graphics.PreferredBackBufferWidth / 2f, GameWorld.Instance.Graphics.PreferredBackBufferHeight - spriteRenderer.Sprite.Height * 2.2f);
             GameObject.Transform.Scale = new Vector2(4f, 4f);
@@ -43,7 +43,7 @@ namespace DesignPatternProjekt.ComponentPatterns
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            SpriteBatch.Draw(recTexture, new Rectangle(100, 100, 100, 100), Color.White);
+            //SpriteBatch.Draw(recTexture, new Rectangle(100, 100, 100, 100), Color.White);
         }
     }
 }
