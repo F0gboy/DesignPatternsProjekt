@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace DesignPatternProjekt.FactoryPatterns
 {
-    internal class Factory
+    internal abstract class Factory
     {
+        public abstract GameObject Create();
     }
 }

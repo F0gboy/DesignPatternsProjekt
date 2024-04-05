@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Content;
 
 namespace DesignPatternProjekt.ComponentPatterns
 {
-    internal class Component
+    public class Component
     {
         public GameObject GameObject { get; private set; }
 

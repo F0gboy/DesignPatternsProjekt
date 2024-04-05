@@ -1,6 +1,8 @@
-﻿using Microsoft.Xna.Framework;
+﻿using DesignPatternProjekt.FactoryPatterns;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using DesignPatternProjekt.ComponentPatterns;
@@ -30,8 +32,8 @@ namespace DesignPatternProjekt
         private SpriteBatch _spriteBatch;
         public GraphicsDeviceManager Graphics { get => _graphics; set => _graphics = value; }
 
-        private List<GameObject> gameObjects = new List<GameObject>();
-
+        public static List<GameObject> gameObjects = new List<GameObject>();
+        public static float DeltaTime { get; private set; }
         private GameWorld()
         {
             _graphics = new(this) { PreferredBackBufferWidth = 1920, PreferredBackBufferHeight = 1080 };
@@ -55,12 +57,36 @@ namespace DesignPatternProjekt
             }
             GameState.OnChangeState += ChangeState;
 
+            //for (int i = 0; i < 7; i++)
+            //{
+            //    gameObjects.Add(EnemyFactory.Instance.Create(ENEMYTYPE.STRONG));
+            //}
+            //for (int i = 0; i < 7; i++)
+            //{
+            //    gameObjects.Add(EnemyFactory.Instance.Create(ENEMYTYPE.SLOW));
+
+            //}
+            //for (int i = 0; i < 7; i++)
+            //{
+            //    gameObjects.Add(EnemyFactory.Instance.Create(ENEMYTYPE.FAST));
+
+            //}
+
+
+
+
+            //EnemyFactory.SpawnEnemies(ENEMYTYPE.STRONG, 2);
+
             base.Initialize();
         }
+        
 
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
+            EnemyFactory.SpawnEnemiesWithDelay(ENEMYTYPE.SLOW, 5, 1.5f, 3f);
+            EnemyFactory.SpawnEnemiesWithDelay(ENEMYTYPE.FAST, 3, 2f, 4f);
+            EnemyFactory.SpawnEnemiesWithDelay(ENEMYTYPE.STRONG, 2, 3f, 5f);
 
             // TODO: use this.Content to load your game content here
 
@@ -83,12 +109,11 @@ namespace DesignPatternProjekt
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-
+            DeltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             foreach (GameObject go in gameObjects)
             {
                 go.Update(gameTime);
             }
-
             // TODO: Add your update logic here
             foreach (var uiComponent in uiComponents) {
                 uiComponent.Update(gameTime);
