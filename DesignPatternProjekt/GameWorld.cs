@@ -15,6 +15,7 @@ namespace DesignPatternProjekt
         public Dictionary<string, Texture2D> sprites { get; private set; }
         public static SpriteFont font;
         private List<UIComponent> uiComponents = new List<UIComponent>();
+        private Fortress player;
 
         public static GameWorld Instance
         {
@@ -34,7 +35,11 @@ namespace DesignPatternProjekt
         public GraphicsDeviceManager Graphics { get => _graphics; set => _graphics = value; }
 
         public static List<GameObject> gameObjects = new List<GameObject>();
-        public static float DeltaTime { get; private set; }
+
+        private List<GameObject> newGameObjects = new List<GameObject>();
+
+        private List<GameObject> destroyedGameObjects = new List<GameObject>();
+        public float DeltaTime { get; private set; }
         private GameWorld()
         {
             _graphics = new(this) { PreferredBackBufferWidth = 1920, PreferredBackBufferHeight = 1080 };
@@ -116,12 +121,15 @@ namespace DesignPatternProjekt
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+
             DeltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+
             foreach (GameObject go in gameObjects)
             {
                 go.Update(gameTime);
             }
-            // TODO: Add your update logic here
+            
+
             foreach (var uiComponent in uiComponents) {
                 uiComponent.Update(gameTime);
             }

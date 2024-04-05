@@ -54,6 +54,14 @@ namespace DesignPatternProjekt
             rotation = (float)Math.Atan2(dPos.Y, dPos.X);
             GameObject.Transform.Rotation = rotation;
 
+            Laser laserComponent = GameObject.GetComponent<Laser>() as Laser;
+
+
+            if (laserComponent != null)
+            {
+                laserComponent.UpdateVelocity();
+            }
+
         }
 
         bool canShoot = true;
@@ -65,6 +73,7 @@ namespace DesignPatternProjekt
                 lastShot = 0;
                 GameObject laser = LaserFactory.Instance.Create();
                 laser.Transform.Position = GameObject.Transform.Position;
+                laser.Transform.Rotation = GameObject.Transform.Rotation;
                 GameWorld.Instance.Instantiate(laser);
             }
         }

@@ -13,9 +13,6 @@ namespace DesignPatternProjekt.ComponentPatterns
         private float speed;
         private Vector2 velocity;
 
-        //public Enemy(GameObject gameObject) : base(gameObject)
-        //{
-        //}
         public Enemy(GameObject gameObject, float speed) : base(gameObject)
         {
             this.speed = speed;
@@ -42,7 +39,7 @@ namespace DesignPatternProjekt.ComponentPatterns
 
             velocity *= speed;
 
-            GameObject.Transform.Translate(velocity * GameWorld.DeltaTime);
+            GameObject.Transform.Translate(velocity * GameWorld.Instance.DeltaTime);
 
             if (GameObject.Transform.Position.Y > GameWorld.Instance.GraphicsDevice.Viewport.Height)
             {

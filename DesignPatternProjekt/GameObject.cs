@@ -10,114 +10,91 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace DesignPatternProjekt
 {
-    public class GameObject
-    {
-        public Transform Transform { get; private set; } = new Transform();
-
-        public List<Component> Components { get; private set; }
-
-        public GameObject()
+        public class GameObject
         {
-            Components = new List<Component>();
-        }
+            private List<Component> components = new List<Component>();
 
-        //public void AddComponent(Component component)
-        //{
-        //    Components.Add(component);
-        //}
-        public T AddComponent<T>(params object[] additionalParameters) where T : Component
-        {
-            Type componentType = typeof(T);
+            public Transform Transform { get; private set; } = new Transform();
 
-            // Find constructors with the correct parameter types
-            var constructor = componentType.GetConstructors()
-                .FirstOrDefault(c =>
+            public string Tag { get; set; }
+
+
+            public T AddComponent<T>() where T : Component
+            {
+                Type componentType = typeof(T);
+                // Get All constructors
+                var constructors = componentType.GetConstructors();
+                // Find COnstructor with exacly 1 param that is a GameObject
+                var constructor = constructors.FirstOrDefault(c =>
                 {
-                    var parametersInfo = c.GetParameters();
-                    if (parametersInfo.Length < 1 + additionalParameters.Length)
-                        return false;
-
-                    // Check if the first parameter is of type GameObject
-                    if (parametersInfo[0].ParameterType != typeof(GameObject))
-                        return false;
-
-                    for (int i = 1; i < parametersInfo.Length; i++)
-                    {
-                        if (i - 1 < additionalParameters.Length &&
-                            parametersInfo[i].ParameterType != additionalParameters[i - 1].GetType())
-                        {
-                            return false;
-                        }
-                    }
-
-                    return true;
+                    var parameters = c.GetParameters();
+                    return parameters.Length == 1 && parameters[0].ParameterType == typeof(GameObject);
                 });
-
-            if (constructor != null)
-            {
-                // Opret en instans ved hjælp af den fundne konstruktør og leverede parametre
-                object[] allParameters = new object[1 + additionalParameters.Length];
-                allParameters[0] = this;
-                Array.Copy(additionalParameters, 0, allParameters, 1, additionalParameters.Length);
-
-                T component = (T)Activator.CreateInstance(componentType, allParameters);
-                Components.Add(component);
-                return component;
-            }
-            else
-            {
-                // Håndter tilfælde, hvor der ikke er en passende konstruktør
-                throw new InvalidOperationException($"Klassen {componentType.Name} har ikke en konstruktør, der matcher de leverede parametre.");
-            }
-        }
-
-        public void RemoveComponent(Component component)
-        {
-            Components.Remove(component);
-        }
-
-        public T GetComponent<T>() where T : Component
-        {
-            foreach (Component component in Components)
-            {
-                if (component is T)
-                { 
-                    return (T)component;
+                if (constructor != null)
+                {
+                    //Create instance of component using the Activator Class with This GameObject as A parameter.
+                    T component = (T)Activator.CreateInstance(componentType, this);
+                    components.Add(component);
+                    return component;
+                }
+                else
+                {
+                    //Error handling...
+                    throw new InvalidOperationException($"Klassen {componentType.Name} skal have en konstruktør med ét parameter af typen GameObject.");
                 }
             }
-            return null;
-        }
-
-        public void Update(GameTime gameTime)
-        {
-            foreach (Component component in Components)
+            public Component AddComponentWithExistingValues(Component component)
             {
-                component.Update(gameTime);
+                components.Add(component);
+                return component;
+            }
+
+            public Component GetComponent<T>() where T : Component
+            {
+                return components.Find(x => x.GetType() == typeof(T));
+            }
+
+            public void Awake()
+            {
+                for (int i = 0; i < components.Count; i++)
+                {
+                    components[i].Awake();
+                }
+            }
+
+            public void Start()
+            {
+                for (int i = 0; i < components.Count; i++)
+                {
+                    components[i].Start();
+                }
+            }
+
+            public void Update(GameTime gameTime)
+            {
+                for (int i = 0; i < components.Count; i++)
+                {
+                    components[i].Update(gameTime);
+                }
+            }
+
+            public void Draw(SpriteBatch spriteBatch)
+            {
+                for (int i = 0; i < components.Count; i++)
+                {
+                    components[i].Draw(spriteBatch);
+                }
+            }
+            public object Clone()
+            {
+                GameObject go = new GameObject();
+                foreach (Component component in components)
+                {
+                    Component newComponent = go.AddComponentWithExistingValues(component.Clone() as Component);
+                    newComponent.SetNewGameObject(go);
+                }
+                return go;
+
             }
         }
-
-        public void Start()
-        {
-            foreach (Component component in Components)
-            {
-                component.Start();
-            }
-        }
-
-        public void Awake()
-        {
-            foreach (Component component in Components)
-            {
-                component.Awake();
-            }
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            foreach (Component component in Components)
-            {
-                component.Draw(spriteBatch);
-            }
-        }
-    }
 }

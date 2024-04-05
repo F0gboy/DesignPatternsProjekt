@@ -15,17 +15,13 @@ namespace DesignPatternProjekt
 
         public Laser(GameObject gameObject) : base(gameObject)
         {
-
             this.speed = 500;
-
-
-            float rotation = GameObject.Transform.Rotation;
-            velocity = new Vector2((float)Math.Cos(rotation), (float)Math.Sin(rotation));
+            UpdateVelocity();
         }
         public override void Update(GameTime gameTime)
         {
-
             Move(gameTime);
+            UpdateVelocity();
         }
 
         private void Move(GameTime gameTime)
@@ -43,6 +39,12 @@ namespace DesignPatternProjekt
             {
                 GameWorld.Instance.Destroy(this.GameObject);
             }
+        }
+
+        public void UpdateVelocity()
+        {
+            float rotation = GameObject.Transform.Rotation;
+            velocity = new Vector2((float)-Math.Cos(rotation), (float)-Math.Sin(rotation)) * speed;
         }
     }
 }
