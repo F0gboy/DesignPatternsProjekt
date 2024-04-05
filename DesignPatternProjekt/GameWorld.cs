@@ -47,8 +47,8 @@ namespace DesignPatternProjekt
             // TODO: Add your initialization logic here
             
             GameObject map = new GameObject();
-            map.AddComponent(new Map(map, Graphics));
-            map.AddComponent(new SpriteRenderer(map));
+            map.AddComponent<Map>();
+            map.AddComponent<SpriteRenderer>();
             gameObjects.Add(map);
 
             foreach (GameObject go in gameObjects)

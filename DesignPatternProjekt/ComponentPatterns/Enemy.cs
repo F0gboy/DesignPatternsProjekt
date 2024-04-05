@@ -13,9 +13,9 @@ namespace DesignPatternProjekt.ComponentPatterns
         private float speed;
         private Vector2 velocity;
 
-        public Enemy(GameObject gameObject) : base(gameObject)
-        {
-        }
+        //public Enemy(GameObject gameObject) : base(gameObject)
+        //{
+        //}
         public Enemy(GameObject gameObject, float speed) : base(gameObject)
         {
             this.speed = speed;
