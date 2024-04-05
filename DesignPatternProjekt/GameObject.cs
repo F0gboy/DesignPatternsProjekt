@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace DesignPatternProjekt
 {
-    internal class GameObject
+    public class GameObject
     {
         public Transform Transform { get; private set; } = new Transform();
 
@@ -21,9 +21,54 @@ namespace DesignPatternProjekt
             Components = new List<Component>();
         }
 
-        public void AddComponent(Component component)
+        //public void AddComponent(Component component)
+        //{
+        //    Components.Add(component);
+        //}
+        public T AddComponent<T>(params object[] additionalParameters) where T : Component
         {
-            Components.Add(component);
+            Type componentType = typeof(T);
+
+            // Find constructors with the correct parameter types
+            var constructor = componentType.GetConstructors()
+                .FirstOrDefault(c =>
+                {
+                    var parametersInfo = c.GetParameters();
+                    if (parametersInfo.Length < 1 + additionalParameters.Length)
+                        return false;
+
+                    // Check if the first parameter is of type GameObject
+                    if (parametersInfo[0].ParameterType != typeof(GameObject))
+                        return false;
+
+                    for (int i = 1; i < parametersInfo.Length; i++)
+                    {
+                        if (i - 1 < additionalParameters.Length &&
+                            parametersInfo[i].ParameterType != additionalParameters[i - 1].GetType())
+                        {
+                            return false;
+                        }
+                    }
+
+                    return true;
+                });
+
+            if (constructor != null)
+            {
+                // Opret en instans ved hjælp af den fundne konstruktør og leverede parametre
+                object[] allParameters = new object[1 + additionalParameters.Length];
+                allParameters[0] = this;
+                Array.Copy(additionalParameters, 0, allParameters, 1, additionalParameters.Length);
+
+                T component = (T)Activator.CreateInstance(componentType, allParameters);
+                Components.Add(component);
+                return component;
+            }
+            else
+            {
+                // Håndter tilfælde, hvor der ikke er en passende konstruktør
+                throw new InvalidOperationException($"Klassen {componentType.Name} har ikke en konstruktør, der matcher de leverede parametre.");
+            }
         }
 
         public void RemoveComponent(Component component)
