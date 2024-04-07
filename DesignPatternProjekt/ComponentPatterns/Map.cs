@@ -14,11 +14,12 @@ namespace DesignPatternProjekt.ComponentPatterns
         public Rectangle outerRec;
         public Rectangle innerRec;
         public Texture2D recTexture;
-        private GraphicsDeviceManager graphicsDeviceManager;
 
         public Map(GameObject gameObject) : base(gameObject)
         {
             //this.graphicsDeviceManager = graphics;
+            outerRec = new Rectangle(560, 85, 800, 850);
+            innerRec = new Rectangle(835, 334, 250, 300);
         }
 
         public override void Awake()
@@ -31,10 +32,11 @@ namespace DesignPatternProjekt.ComponentPatterns
             SpriteRenderer spriteRenderer = GameObject.GetComponent<SpriteRenderer>() as SpriteRenderer;
             spriteRenderer.SetSprite("DesignPatternMap");
 
-            //recTexture = new Texture2D(graphicsDeviceManager.GraphicsDevice, 80, 30);
-
             GameObject.Transform.Position = new Vector2(GameWorld.Instance.Graphics.PreferredBackBufferWidth / 2f, GameWorld.Instance.Graphics.PreferredBackBufferHeight - spriteRenderer.Sprite.Height * 2.2f);
             GameObject.Transform.Scale = new Vector2(4f, 4f);
+
+            recTexture = new Texture2D(GameWorld.Instance.GraphicsDevice, 1, 1);
+            recTexture.SetData(new[] { Color.White });
         }
 
         public override void Update(GameTime gameTime)
@@ -44,7 +46,12 @@ namespace DesignPatternProjekt.ComponentPatterns
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            //spriteBatch.Draw(recTexture, new Rectangle(100, 100, 100, 100), Color.White);
+            if (recTexture != null)
+            {
+                 spriteBatch.Draw(recTexture, outerRec, Color.White * 0.5f);
+                     
+                 spriteBatch.Draw(recTexture, innerRec, Color.White * 0.5f);
+            }
         }
     }
 }

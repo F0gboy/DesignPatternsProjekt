@@ -106,7 +106,7 @@ namespace DesignPatternProjekt
             {
                 go.Start();
             }
-            
+
             font = Content.Load<SpriteFont>("Font");
 
             sprites = new Dictionary<string, Texture2D>()
@@ -128,7 +128,6 @@ namespace DesignPatternProjekt
             {
                 go.Update(gameTime);
             }
-            
 
             foreach (var uiComponent in uiComponents) {
                 uiComponent.Update(gameTime);
@@ -154,7 +153,7 @@ namespace DesignPatternProjekt
             {
                 go.Draw(_spriteBatch);
             }
-            
+
             foreach (var uiComponent in uiComponents) {
                 uiComponent.Draw(gameTime, _spriteBatch);
             }
