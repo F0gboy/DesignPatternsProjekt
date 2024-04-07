@@ -39,15 +39,15 @@ namespace DesignPatternProjekt.FactoryPatterns
             switch (type)
             {
                 case ENEMYTYPE.SLOW:
-                    sr.SetSprite("enemyBlue2");
+                    sr.SetSprite("Slowzombie");
                     go.AddComponent<Enemy>(50f);
                     break;
                 case ENEMYTYPE.FAST:
-                    sr.SetSprite("enemyGreen3");
+                    sr.SetSprite("Fastzombie");
                     go.AddComponent<Enemy>(100f);
                     break;
                 case ENEMYTYPE.STRONG:
-                    sr.SetSprite("enemyRed4");
+                    sr.SetSprite("Strongzombie");
                     go.AddComponent<Enemy>(150f);
 
                     break;
