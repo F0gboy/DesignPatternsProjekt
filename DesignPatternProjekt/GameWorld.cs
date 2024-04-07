@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using DesignPatternProjekt.ComponentPatterns;
+using DesignPatternProjekt.CommandPatterns;
 
 namespace DesignPatternProjekt
 {
@@ -44,7 +45,7 @@ namespace DesignPatternProjekt
         {
             _graphics = new(this) { PreferredBackBufferWidth = 1920, PreferredBackBufferHeight = 1080 };
             Content.RootDirectory = "Content";
-            _graphics.IsFullScreen = true;
+            //_graphics.IsFullScreen = true;
             IsMouseVisible = true;
         }
 
@@ -135,7 +136,6 @@ namespace DesignPatternProjekt
 
             player.Rotation();
 
-
             InputHandler.Instance.Execute();
             base.Update(gameTime);
 
@@ -201,7 +201,8 @@ namespace DesignPatternProjekt
                         new Button()
                         {
                             rect = new Rectangle(500, 500, 200, 100),
-                            text = "Hello"
+                            text = "Hello", 
+                            Command = new StateChangeCommand(GameStates.Playing)
                         }
                     );
                     break;

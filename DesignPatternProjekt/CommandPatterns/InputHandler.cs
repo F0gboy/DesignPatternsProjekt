@@ -24,6 +24,7 @@ namespace DesignPatternProjekt
         private Dictionary<Keys, ICommand> keybindsButtonDown = new Dictionary<Keys, ICommand>();
         private Stack<ICommand> executedCommands = new Stack<ICommand>();
         private Stack<ICommand> undoneCommands = new Stack<ICommand>();
+        private List<ICommand> externalCommands = new List<ICommand>();
         public void AddUpdateCommand(Keys inputKey, ICommand command)
         {
             keybindsUpdate.Add(inputKey, command);
@@ -33,10 +34,22 @@ namespace DesignPatternProjekt
         {
             keybindsButtonDown.Add(inputKey, command);
         }
+
+        public void ExecuteCommand(ICommand command)
+        {
+            externalCommands.Add(command);
+        }
         private KeyboardState previousKeyState;
         public void Execute()
         {
             KeyboardState keyState = Keyboard.GetState();
+            foreach (ICommand command in externalCommands)
+            {
+                command.Execute();
+                executedCommands.Push(command);
+                undoneCommands.Clear();
+            }
+            externalCommands.Clear();
 
             foreach (var pressedKey in keyState.GetPressedKeys())
             {
