@@ -61,7 +61,7 @@ namespace DesignPatternProjekt
                 laserComponent.UpdateVelocity();
             }
 
-            Laser laserComponent = GameObject.GetComponent<Laser>() as Laser;
+            //Laser laserComponent = GameObject.GetComponent<Laser>() as Laser;
 
 
             if (laserComponent != null)

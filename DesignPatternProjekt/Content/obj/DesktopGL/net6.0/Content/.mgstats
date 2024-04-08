@@ -1,5 +1,1 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"F:/DesignPatternsProjekt/DesignPatternProjekt/Content/Fastzombie.png","F:/DesignPatternsProjekt/DesignPatternProjekt/Content/bin/DesktopGL/Content/Fastzombie.xnb","TextureProcessor","Texture2DContent",18227,5881,0,0918816
-"F:/DesignPatternsProjekt/DesignPatternProjekt/Content/Pixel.png","F:/DesignPatternsProjekt/DesignPatternProjekt/Content/bin/DesktopGL/Content/Pixel.xnb","TextureProcessor","Texture2DContent",2804,485,0,0012486
-"F:/DesignPatternsProjekt/DesignPatternProjekt/Content/Slowzombie.png","F:/DesignPatternsProjekt/DesignPatternProjekt/Content/bin/DesktopGL/Content/Slowzombie.xnb","TextureProcessor","Texture2DContent",17963,7509,0,0021176
-"F:/DesignPatternsProjekt/DesignPatternProjekt/Content/Strongzombie.png","F:/DesignPatternsProjekt/DesignPatternProjekt/Content/bin/DesktopGL/Content/Strongzombie.xnb","TextureProcessor","Texture2DContent",18281,9913,0,0019013
