@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using DesignPatternProjekt.ComponentPatterns;
+using DesignPatternProjekt.CommandPatterns;
 
 namespace DesignPatternProjekt
 {
@@ -16,6 +17,7 @@ namespace DesignPatternProjekt
         public static SpriteFont font;
         private List<UIComponent> uiComponents = new List<UIComponent>();
         private Fortress player;
+        public bool gameStarted;
 
         public static GameWorld Instance
         {
@@ -122,21 +124,26 @@ namespace DesignPatternProjekt
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            DeltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-
-            foreach (GameObject go in gameObjects)
+            if (gameStarted)
             {
-                go.Update(gameTime);
+                DeltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+                foreach (GameObject go in gameObjects)
+                {
+                    go.Update(gameTime);
+                }
+
+                player.Rotation();
+
             }
+
 
             foreach (var uiComponent in uiComponents) {
                 uiComponent.Update(gameTime);
             }
 
-            player.Rotation();
-
-
             InputHandler.Instance.Execute();
+
             base.Update(gameTime);
 
             Cleanup();
@@ -149,9 +156,13 @@ namespace DesignPatternProjekt
 
             _spriteBatch.Begin(samplerState: SamplerState.PointClamp);
 
-            foreach (GameObject go in gameObjects)
+            if (gameStarted)
             {
-                go.Draw(_spriteBatch);
+                foreach (GameObject go in gameObjects)
+                {
+                    go.Draw(_spriteBatch);
+                }
+
             }
 
             foreach (var uiComponent in uiComponents) {
@@ -200,8 +211,9 @@ namespace DesignPatternProjekt
                     uiComponents.Add(
                         new Button()
                         {
-                            rect = new Rectangle(500, 500, 200, 100),
-                            text = "Hello"
+                            rect = new Rectangle(885, 500, 150, 75),
+                            text = "New Game", 
+                            Command = new StateChangeCommand(GameStates.Playing)
                         }
                     );
                     break;
@@ -210,6 +222,7 @@ namespace DesignPatternProjekt
                 case GameStates.OptionMenu:
                     break;
                 case GameStates.Playing:
+                    gameStarted = true;
                     break;
                 case GameStates.Paused:
                     break;

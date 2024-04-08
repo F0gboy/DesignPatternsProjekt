@@ -21,6 +21,12 @@ namespace DesignPatternProjekt
         public Rectangle rect;
         private Point edgeSize;
 
+        public ICommand Command
+        {
+            private get;
+            set;
+        }
+
         public string text;
 
         public Button()
@@ -110,6 +116,10 @@ namespace DesignPatternProjekt
             currentMouse = Mouse.GetState();
 
             isHovering = rect.Contains(currentMouse.X, currentMouse.Y);
+            if ( isHovering && currentMouse.LeftButton == ButtonState.Pressed && previousMouse.LeftButton == ButtonState.Released)
+            {
+                InputHandler.Instance.ExecuteCommand(Command);
+            }
         } 
     }
 }
