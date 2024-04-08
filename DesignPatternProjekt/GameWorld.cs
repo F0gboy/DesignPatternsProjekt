@@ -73,25 +73,11 @@ namespace DesignPatternProjekt
 
             GameState.OnChangeState += ChangeState;
 
-            //for (int i = 0; i < 7; i++)
-            //{
-            //    gameObjects.Add(EnemyFactory.Instance.Create(ENEMYTYPE.STRONG));
-            //}
-            //for (int i = 0; i < 7; i++)
-            //{
-            //    gameObjects.Add(EnemyFactory.Instance.Create(ENEMYTYPE.SLOW));
-
-            //}
-            //for (int i = 0; i < 7; i++)
-            //{
-            //    gameObjects.Add(EnemyFactory.Instance.Create(ENEMYTYPE.FAST));
-
-            //}
 
 
 
 
-            //EnemyFactory.SpawnEnemies(ENEMYTYPE.STRONG, 2);
+
 
             base.Initialize();
         }
@@ -100,9 +86,12 @@ namespace DesignPatternProjekt
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            EnemyFactory.SpawnEnemiesWithDelay(ENEMYTYPE.SLOW, 5, 1.5f, 3f);
-            EnemyFactory.SpawnEnemiesWithDelay(ENEMYTYPE.FAST, 3, 2f, 4f);
-            EnemyFactory.SpawnEnemiesWithDelay(ENEMYTYPE.STRONG, 2, 3f, 5f);
+            //EnemyFactory.SpawnEnemiesWithDelay(ENEMYTYPE.SLOW, 5, 1.5f, 3f);
+            //EnemyFactory.SpawnEnemiesWithDelay(ENEMYTYPE.FAST, 3, 2f, 4f);
+            //EnemyFactory.SpawnEnemiesWithDelay(ENEMYTYPE.STRONG, 2, 3f, 5f);
+            EnemyFactory.SpawnEnemies(ENEMYTYPE.STRONG, 20);
+            EnemyFactory.SpawnEnemies(ENEMYTYPE.FAST, 20);
+            EnemyFactory.SpawnEnemies(ENEMYTYPE.SLOW, 20);
 
             foreach (GameObject go in gameObjects)
             {
