@@ -53,6 +53,13 @@ namespace DesignPatternProjekt
 
             rotation = (float)Math.Atan2(dPos.Y, dPos.X);
             GameObject.Transform.Rotation = rotation;
+            Laser laserComponent = GameObject.GetComponent<Laser>() as Laser;
+
+
+            if (laserComponent != null)
+            {
+                laserComponent.UpdateVelocity();
+            }
 
             Laser laserComponent = GameObject.GetComponent<Laser>() as Laser;
 
@@ -81,7 +88,7 @@ namespace DesignPatternProjekt
         float lastShot = 0;
         public override void Update(GameTime gameTime)
         {
-            GameObject.Transform.Rotation += rotation;
+            //GameObject.Transform.Rotation += rotation;
             lastShot += GameWorld.Instance.DeltaTime;
             if (lastShot > shootTimer)
             {
