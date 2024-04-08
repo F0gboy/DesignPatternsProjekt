@@ -11,6 +11,7 @@ namespace DesignPatternProjekt.ComponentPatterns
 {
     internal class Enemy : Component
     {
+        private int hp;
         private float speed;
         private Vector2 velocity;
         private SpriteRenderer spriteRenderer;
@@ -34,6 +35,7 @@ namespace DesignPatternProjekt.ComponentPatterns
             this.speed = speed;
 
             velocity = new Vector2(0, 1);
+            //GameObject.Transform.Position = RandomPositionOutsideTopOfBounds();
             GameObject.Transform.Position = RandomPositionOutsideTopOfBounds();
         }
 
@@ -80,9 +82,9 @@ namespace DesignPatternProjekt.ComponentPatterns
             texture = GameWorld.Instance.Content.Load<Texture2D>("Pixel");
 
         }
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            DrawRectangle(HitBox, spriteBatch);
-        }
+        //public override void Draw(SpriteBatch spriteBatch)
+        //{
+        //    DrawRectangle(HitBox, spriteBatch);
+        //}
     }
 }
