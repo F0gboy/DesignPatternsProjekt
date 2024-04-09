@@ -18,6 +18,11 @@ namespace DesignPatternProjekt
         private List<UIComponent> uiComponents = new List<UIComponent>();
         private Fortress player;
         public bool gameStarted;
+        public bool gameEnded;
+        public static List<GameObject> LaserList = new List<GameObject>();
+        public static List<GameObject> LaserTempList = new List<GameObject>();
+        public static List<GameObject> EnemiesList = new List<GameObject>();
+        public Rectangle outerRec;
 
         public static GameWorld Instance
         {
@@ -46,14 +51,16 @@ namespace DesignPatternProjekt
         {
             _graphics = new(this) { PreferredBackBufferWidth = 1920, PreferredBackBufferHeight = 1080 };
             Content.RootDirectory = "Content";
-            _graphics.IsFullScreen = true;
+            //_graphics.IsFullScreen = true;
             IsMouseVisible = true;
+            outerRec = new Rectangle(835, 334, 1920, 300);
+
         }
 
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            
+
             GameObject map = new GameObject();
             map.AddComponent<Map>();
             map.AddComponent<SpriteRenderer>();
@@ -133,6 +140,26 @@ namespace DesignPatternProjekt
                     go.Update(gameTime);
                 }
 
+                LaserTempList = new List<GameObject>(LaserList);
+
+                foreach (var laser in LaserList)
+                {
+                    foreach (var enemy in EnemiesList)
+                    {
+                        float distance = Vector2.Distance(laser.Transform.Position, enemy.Transform.Position);
+
+                        if (distance <= 30)
+                        {
+                            enemy.Transform.Position = new Vector2(enemy.Transform.Position.X, -60);
+
+                            LaserTempList.Remove(laser);
+                            Destroy(laser);
+                        }
+                    }
+                }
+
+                LaserList = new List<GameObject>(LaserTempList);
+
                 player.Rotation();
 
             }
@@ -165,6 +192,13 @@ namespace DesignPatternProjekt
 
             }
 
+            if (gameEnded)
+            {
+                gameStarted = false;
+                
+                _spriteBatch.DrawString(font, "You lost, reopen program to try again.", new Vector2(500, 200), Color.Black);
+            }
+
             foreach (var uiComponent in uiComponents) {
                 uiComponent.Draw(gameTime, _spriteBatch);
             }
@@ -175,6 +209,7 @@ namespace DesignPatternProjekt
             base.Draw(gameTime);
 
         }
+
         private void Cleanup()
         {
             for (int i = 0; i < newGameObjects.Count; i++)
@@ -191,6 +226,7 @@ namespace DesignPatternProjekt
             destroyedGameObjects.Clear();
             newGameObjects.Clear();
         }
+
         public void Instantiate(GameObject go)
         {
             newGameObjects.Add(go);

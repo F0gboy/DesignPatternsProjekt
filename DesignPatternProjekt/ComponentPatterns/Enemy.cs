@@ -29,6 +29,11 @@ namespace DesignPatternProjekt.ComponentPatterns
             }
         }
 
+        public Rectangle GetBoundingBox()
+        {
+            return HitBox;
+        }
+
         public Enemy(GameObject gameObject, float speed) : base(gameObject)
         {
             this.speed = speed;
@@ -39,7 +44,15 @@ namespace DesignPatternProjekt.ComponentPatterns
 
         public override void Update(GameTime gameTime)
         {
-            Move();
+            if (GameObject.Transform.Position.Y >= 440)
+            {
+                GameWorld.Instance.gameStarted = false;
+                GameWorld.Instance.gameEnded = true;
+            }
+            else
+            {
+                Move();
+            }
         }
         Vector2 RandomPositionOutsideTopOfBounds()
         {

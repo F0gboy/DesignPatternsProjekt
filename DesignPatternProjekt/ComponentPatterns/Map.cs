@@ -12,14 +12,14 @@ namespace DesignPatternProjekt.ComponentPatterns
     internal class Map : Component
     {
         public Rectangle outerRec;
-        public Rectangle innerRec;
+        //public Rectangle innerRec;
         public Texture2D recTexture;
 
         public Map(GameObject gameObject) : base(gameObject)
         {
             //this.graphicsDeviceManager = graphics;
-            outerRec = new Rectangle(560, 85, 800, 850);
-            innerRec = new Rectangle(835, 334, 250, 300);
+            outerRec = new Rectangle(835, 334, 1920, 300);
+            //innerRec = new Rectangle(835, 334, 250, 300);
         }
 
         public override void Awake()
@@ -50,7 +50,7 @@ namespace DesignPatternProjekt.ComponentPatterns
             {
                  spriteBatch.Draw(recTexture, outerRec, Color.White * 0.5f);
                      
-                 spriteBatch.Draw(recTexture, innerRec, Color.White * 0.5f);
+                 //spriteBatch.Draw(recTexture, innerRec, Color.White * 0.5f);
             }
         }
     }

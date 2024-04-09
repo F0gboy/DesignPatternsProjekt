@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 namespace DesignPatternProjekt.FactoryPatterns
 {
     public enum ENEMYTYPE { SLOW, FAST, STRONG }
+
     internal class EnemyFactory : Factory
     {
         private static EnemyFactory instance;
@@ -36,19 +37,21 @@ namespace DesignPatternProjekt.FactoryPatterns
 
             SpriteRenderer sr = go.AddComponent<SpriteRenderer>();
 
+            GameWorld.EnemiesList.Add(go);
+
             switch (type)
             {
                 case ENEMYTYPE.SLOW:
                     sr.SetSprite("Slowzombie");
-                    go.AddComponent<Enemy>(50f);
+                    go.AddComponent<Enemy>(15f);
                     break;
                 case ENEMYTYPE.FAST:
                     sr.SetSprite("Fastzombie");
-                    go.AddComponent<Enemy>(100f);
+                    go.AddComponent<Enemy>(25f);
                     break;
                 case ENEMYTYPE.STRONG:
                     sr.SetSprite("Strongzombie");
-                    go.AddComponent<Enemy>(150f);
+                    go.AddComponent<Enemy>(35f);
 
                     break;
             }
@@ -58,6 +61,8 @@ namespace DesignPatternProjekt.FactoryPatterns
         public override GameObject Create()
         {
             GameObject go = new GameObject();
+
+            GameWorld.EnemiesList.Add(go);
 
             SpriteRenderer sr = go.AddComponent<SpriteRenderer>();
             sr.SetSprite("enemyBlue2");

@@ -13,6 +13,8 @@ namespace DesignPatternProjekt
         private float speed;
         private MouseState currentMouse;
         private float rotation;
+        public static List<GameObject> LaserList = new List<GameObject>();
+
         public Fortress(GameObject gameObject) : base(gameObject)
         {
         }
@@ -55,20 +57,10 @@ namespace DesignPatternProjekt
             GameObject.Transform.Rotation = rotation;
             Laser laserComponent = GameObject.GetComponent<Laser>() as Laser;
 
-
             if (laserComponent != null)
             {
                 laserComponent.UpdateVelocity();
             }
-
-            //Laser laserComponent = GameObject.GetComponent<Laser>() as Laser;
-
-
-            if (laserComponent != null)
-            {
-                laserComponent.UpdateVelocity();
-            }
-
         }
 
         bool canShoot = true;
@@ -79,6 +71,7 @@ namespace DesignPatternProjekt
                 canShoot = false;
                 lastShot = 0;
                 GameObject laser = LaserFactory.Instance.Create();
+                GameWorld.LaserList.Add(laser);
                 laser.Transform.Position = GameObject.Transform.Position;
                 laser.Transform.Rotation = GameObject.Transform.Rotation;
                 GameWorld.Instance.Instantiate(laser);

@@ -13,19 +13,25 @@ namespace DesignPatternProjekt
 
         private Vector2 velocity;
 
+
         public Laser(GameObject gameObject) : base(gameObject)
         {
             this.speed = 500;
             UpdateVelocity();
+            
+
         }
         public override void Update(GameTime gameTime)
         {
             Move(gameTime);
             UpdateVelocity();
+            
         }
 
+        // Move the laser
         private void Move(GameTime gameTime)
         {
+            // Normalize the velocity
             if (velocity != Vector2.Zero)
             {
                 velocity.Normalize();
@@ -35,12 +41,14 @@ namespace DesignPatternProjekt
 
             GameObject.Transform.Translate(velocity * GameWorld.Instance.DeltaTime);
 
+            // Destroy the laser if it goes out of bounds
             if (GameObject.Transform.Position.Y < 0)
             {
                 GameWorld.Instance.Destroy(this.GameObject);
             }
         }
 
+        // Update the velocity of the laser
         public void UpdateVelocity()
         {
             float rotation = GameObject.Transform.Rotation;
