@@ -70,81 +70,13 @@ namespace DesignPatternProjekt.FactoryPatterns
         public static void SpawnEnemies(ENEMYTYPE type, int count)
         {
             for (int i = 0; i < count; i++)
-            {
-                // Spawn enemy
+            {   
 
                 GameWorld.gameObjects.Add(Create(type));
-                // Place or manage the spawned enemy as needed
+                
             }
         }
 
-        //public static void SpawnEnemiesWithDelay(ENEMYTYPE type, int count, float minDelay, float maxDelay)
-        //{
-        //    Random random = new Random();
-            
-
-        //    //float timeSinceLastSpawn = 0f;
-
-        //    //for (int i = 0; i < count; i++)
-        //    //{
-        //    //    timeSinceLastSpawn += GameWorld.DeltaTime;
-
-        //    //    if (timeSinceLastSpawn >= minDelay)
-        //    //    {
-        //    //        // Spawn enemy
-        //    //        GameWorld.gameObjects.Add(Create(type));
-        //    //        // Place or manage the spawned enemy as needed
-
-        //    //        timeSinceLastSpawn = 0f;
-        //    //    }
-        //    //}
-
-        //    //float timeSinceLastSpawn = 0f;
-
-        //    //for (int i = 0; i < count; i++)
-        //    //{
-        //    //    timeSinceLastSpawn += GameWorld.DeltaTime;
-        //    //    int minDelayMillis = (int)(minDelay * 1000);
-        //    //    int maxDelayMillis = (int)(maxDelay * 1000);
-        //    //    if (timeSinceLastSpawn >= random.Next(minDelayMillis, maxDelayMillis) / 1000f)
-        //    //    {
-        //    //        // Spawn enemy
-        //    //        GameWorld.gameObjects.Add(Create(type));
-        //    //        // Place or manage the spawned enemy as needed
-
-        //    //        timeSinceLastSpawn = 0f;
-        //    //    }
-        //    //}
-        //    float timeUntilNextSpawn = 0;
-
-        //    for (int i = 0; i < count; i++)
-        //    {
-        //        timeUntilNextSpawn = minDelay;
-
-        //        while (timeUntilNextSpawn >= 0)
-        //        {
-                    
-        //            timeUntilNextSpawn --;
-        //        }
-
-        //        if (timeUntilNextSpawn <= 0)
-        //        {
-        //            // Spawn enemy
-        //            GameWorld.gameObjects.Add(Create(type));
-        //            // Place or manage the spawned enemy as needed
-
-        //            // Calculate a random delay within the specified range
-        //            //int minDelayMillis = (int)(minDelay * 1000);
-        //            //int maxDelayMillis = (int)(maxDelay * 1000);
-        //            //timeUntilNextSpawn = random.Next(minDelayMillis, maxDelayMillis) / 1000f;
-        //            timeUntilNextSpawn = maxDelay;
-
-
-        //        }
-
-        //    }
-
-
-        //}
+       
     }
 }

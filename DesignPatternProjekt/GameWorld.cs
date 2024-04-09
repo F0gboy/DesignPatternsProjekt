@@ -18,7 +18,6 @@ namespace DesignPatternProjekt
         private List<UIComponent> uiComponents = new List<UIComponent>();
         private Fortress player;
         public bool gameStarted;
-
         public static GameWorld Instance
         {
             get
@@ -52,7 +51,7 @@ namespace DesignPatternProjekt
 
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+            
             
             GameObject map = new GameObject();
             map.AddComponent<Map>();
@@ -73,12 +72,6 @@ namespace DesignPatternProjekt
 
             GameState.OnChangeState += ChangeState;
 
-
-
-
-
-
-
             base.Initialize();
         }
         
@@ -86,9 +79,7 @@ namespace DesignPatternProjekt
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            //EnemyFactory.SpawnEnemiesWithDelay(ENEMYTYPE.SLOW, 5, 1.5f, 3f);
-            //EnemyFactory.SpawnEnemiesWithDelay(ENEMYTYPE.FAST, 3, 2f, 4f);
-            //EnemyFactory.SpawnEnemiesWithDelay(ENEMYTYPE.STRONG, 2, 3f, 5f);
+            
             EnemyFactory.SpawnEnemies(ENEMYTYPE.STRONG, 20);
             EnemyFactory.SpawnEnemies(ENEMYTYPE.FAST, 20);
             EnemyFactory.SpawnEnemies(ENEMYTYPE.SLOW, 20);
@@ -157,7 +148,7 @@ namespace DesignPatternProjekt
             foreach (var uiComponent in uiComponents) {
                 uiComponent.Draw(gameTime, _spriteBatch);
             }
-            // TODO: Add your drawing code here
+            
 
             _spriteBatch.End();
 
