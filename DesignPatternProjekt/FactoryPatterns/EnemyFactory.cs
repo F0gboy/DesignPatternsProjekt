@@ -39,6 +39,7 @@ namespace DesignPatternProjekt.FactoryPatterns
 
             GameWorld.EnemiesList.Add(go);
 
+            // Set the sprite and add the enemy component and speed
             switch (type)
             {
                 case ENEMYTYPE.SLOW:
@@ -58,6 +59,7 @@ namespace DesignPatternProjekt.FactoryPatterns
 
             return go;
         }
+
         public override GameObject Create()
         {
             GameObject go = new GameObject();
@@ -70,8 +72,7 @@ namespace DesignPatternProjekt.FactoryPatterns
             return go;
         }
 
-
-
+        // Spawn enemies
         public static void SpawnEnemies(ENEMYTYPE type, int count)
         {
             for (int i = 0; i < count; i++)

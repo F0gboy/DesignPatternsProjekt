@@ -24,6 +24,7 @@ namespace DesignPatternProjekt
         public static List<GameObject> EnemiesList = new List<GameObject>();
         public Rectangle outerRec;
 
+        // Singleton
         public static GameWorld Instance
         {
             get
@@ -51,7 +52,7 @@ namespace DesignPatternProjekt
         {
             _graphics = new(this) { PreferredBackBufferWidth = 1920, PreferredBackBufferHeight = 1080 };
             Content.RootDirectory = "Content";
-            //_graphics.IsFullScreen = true;
+            _graphics.IsFullScreen = true;
             IsMouseVisible = true;
             outerRec = new Rectangle(835, 334, 1920, 300);
 
@@ -61,11 +62,13 @@ namespace DesignPatternProjekt
         {
             // TODO: Add your initialization logic here
 
+            // Create the map
             GameObject map = new GameObject();
             map.AddComponent<Map>();
             map.AddComponent<SpriteRenderer>();
             gameObjects.Add(map);
 
+            // Create the player
             GameObject playerGo = new GameObject();
             player = playerGo.AddComponent<Fortress>();
             playerGo.AddComponent<SpriteRenderer>();
@@ -75,7 +78,7 @@ namespace DesignPatternProjekt
                 go.Awake();
             }
 
-
+            // Add commands to the input handler
             InputHandler.Instance.AddButtonDownCommand(Keys.Space, new ShootCommand(player));
 
             GameState.OnChangeState += ChangeState;
@@ -88,15 +91,18 @@ namespace DesignPatternProjekt
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             
+            // Create the enemies
             EnemyFactory.SpawnEnemies(ENEMYTYPE.STRONG, 3);
             EnemyFactory.SpawnEnemies(ENEMYTYPE.FAST, 3);
             EnemyFactory.SpawnEnemies(ENEMYTYPE.SLOW, 4);
 
+            // Load the sprites
             foreach (GameObject go in gameObjects)
             {
                 go.Start();
             }
 
+            // Load the font
             font = Content.Load<SpriteFont>("Font");
 
             sprites = new Dictionary<string, Texture2D>()
@@ -112,6 +118,7 @@ namespace DesignPatternProjekt
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+            // Update the game objects
             if (gameStarted)
             {
                 DeltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -123,6 +130,7 @@ namespace DesignPatternProjekt
 
                 LaserTempList = new List<GameObject>(LaserList);
 
+                // Check for collisions
                 foreach (var laser in LaserList)
                 {
                     foreach (var enemy in EnemiesList)
@@ -131,6 +139,7 @@ namespace DesignPatternProjekt
 
                         if (distance <= 30)
                         {
+                            // Destroy the enemy
                             enemy.Transform.Position = new Vector2(enemy.Transform.Position.X, -60);
 
                             LaserTempList.Remove(laser);
@@ -145,7 +154,7 @@ namespace DesignPatternProjekt
 
             }
 
-
+            // Update the UI components
             foreach (var uiComponent in uiComponents) {
                 uiComponent.Update(gameTime);
             }
@@ -164,6 +173,7 @@ namespace DesignPatternProjekt
 
             _spriteBatch.Begin(samplerState: SamplerState.PointClamp);
 
+            // Draw the game objects
             if (gameStarted)
             {
                 foreach (GameObject go in gameObjects)
@@ -172,7 +182,8 @@ namespace DesignPatternProjekt
                 }
 
             }
-
+            
+            // Draw the end screen
             if (gameEnded)
             {
                 gameStarted = false;
@@ -180,6 +191,7 @@ namespace DesignPatternProjekt
                 _spriteBatch.DrawString(font, "You lost, reopen program to try again.", new Vector2(500, 200), Color.Black);
             }
 
+            // Draw the UI components
             foreach (var uiComponent in uiComponents) {
                 uiComponent.Draw(gameTime, _spriteBatch);
             }
@@ -191,6 +203,7 @@ namespace DesignPatternProjekt
 
         }
 
+        // Clean up the game objects
         private void Cleanup()
         {
             for (int i = 0; i < newGameObjects.Count; i++)
@@ -218,6 +231,7 @@ namespace DesignPatternProjekt
             destroyedGameObjects.Add(go);
         }
 
+        // Change the state of the game
         private void ChangeState() 
         {
             uiComponents.Clear();

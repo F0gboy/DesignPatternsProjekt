@@ -12,6 +12,7 @@ namespace DesignPatternProjekt
 
         private static LaserFactory instance;
 
+        // Singleton pattern
         public static LaserFactory Instance
         {
             get
@@ -33,6 +34,7 @@ namespace DesignPatternProjekt
             sr.SetSprite("Projectile1");
             prototype.AddComponent<Laser>();
         }
+
         public override GameObject Create()
         {
             return (GameObject)prototype.Clone();

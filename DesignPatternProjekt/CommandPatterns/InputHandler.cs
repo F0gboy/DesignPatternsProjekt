@@ -40,6 +40,8 @@ namespace DesignPatternProjekt
             externalCommands.Add(command);
         }
         private KeyboardState previousKeyState;
+
+        // Execute all commands
         public void Execute()
         {
             KeyboardState keyState = Keyboard.GetState();
@@ -51,6 +53,7 @@ namespace DesignPatternProjekt
             }
             externalCommands.Clear();
 
+            // Check if a key is pressed
             foreach (var pressedKey in keyState.GetPressedKeys())
             {
                 if (keybindsUpdate.TryGetValue(pressedKey, out ICommand cmd))
@@ -79,6 +82,7 @@ namespace DesignPatternProjekt
             previousKeyState = keyState;
         }
 
+        // Undo the last command
         private void Undo()
         {
             if (executedCommands.Count > 0)
@@ -89,6 +93,7 @@ namespace DesignPatternProjekt
             }
         }
 
+        // Redo the last command
         public void Redo()
         {
             if (undoneCommands.Count > 0)

@@ -14,6 +14,8 @@ namespace DesignPatternProjekt
         Playing,
         Paused,
     }
+
+    // This class is a singleton that holds the current state of the game
     public static class GameState
     {
         public delegate void StateEvent();

@@ -43,6 +43,7 @@ namespace DesignPatternProjekt
             var textColor = Color.Black;
             int layerDepth = 0;
 
+            //Calculate scale
             var scale = new Vector2(
                 (float)(rect.Width - 2 * edgeSize.X) / (texture.Width - 2 * edgeSize.X),
                 (float)(rect.Height - 2 * edgeSize.Y) / (texture.Height - 2 * edgeSize.Y)

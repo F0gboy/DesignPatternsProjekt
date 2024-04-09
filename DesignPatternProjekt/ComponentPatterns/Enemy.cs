@@ -30,22 +30,18 @@ namespace DesignPatternProjekt.ComponentPatterns
             }
         }
 
-        public Rectangle GetBoundingBox()
-        {
-            return HitBox;
-        }
-
         public Enemy(GameObject gameObject, float speed) : base(gameObject)
         {
             this.speed = speed;
 
+            // Set the velocity to move downwards
             velocity = new Vector2(0, 1);
-            //GameObject.Transform.Position = RandomPositionOutsideTopOfBounds();
             GameObject.Transform.Position = RandomPositionOutsideTopOfBounds();
         }
 
         public override void Update(GameTime gameTime)
         {
+            // End the game if the enemy reaches the bottom of the screen
             if (GameObject.Transform.Position.Y >= 440)
             {
                 GameWorld.Instance.gameStarted = false;
@@ -56,11 +52,15 @@ namespace DesignPatternProjekt.ComponentPatterns
                 Move();
             }
         }
+
+        // Get a random position outside the top of the screen
         Vector2 RandomPositionOutsideTopOfBounds()
         {
             Random rnd = new Random();
             return new Vector2(rnd.Next(0, GameWorld.Instance.GraphicsDevice.Viewport.Width), -((SpriteRenderer)GameObject.GetComponent<SpriteRenderer>()).Sprite.Height / 2);
         }
+
+        // Move the enemy
         private void Move()
         {
             if (velocity != Vector2.Zero)
@@ -77,6 +77,8 @@ namespace DesignPatternProjekt.ComponentPatterns
                 GameObject.Transform.Position = RandomPositionOutsideTopOfBounds();
             }
         }
+
+        // Draw a rectangle around the enemy
         private void DrawRectangle(Rectangle collisionBox, SpriteBatch spriteBatch)
         {
             Rectangle topLine = new Rectangle(collisionBox.X, collisionBox.Y, collisionBox.Width, 1);
@@ -95,9 +97,5 @@ namespace DesignPatternProjekt.ComponentPatterns
             texture = GameWorld.Instance.Content.Load<Texture2D>("Pixel");
 
         }
-        //public override void Draw(SpriteBatch spriteBatch)
-        //{
-        //    DrawRectangle(HitBox, spriteBatch);
-        //}
     }
 }

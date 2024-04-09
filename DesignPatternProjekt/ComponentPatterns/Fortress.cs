@@ -19,18 +19,6 @@ namespace DesignPatternProjekt
         {
         }
 
-        //public void Move(Vector2 velocity)
-        //{
-        //    if (velocity != Vector2.Zero)
-        //    {
-        //        velocity.Normalize();
-        //    }
-
-        //    velocity *= speed;
-
-        //    GameObject.Transform.Translate(velocity * GameWorld.DeltaTime);
-        //}
-
         public override void Awake()
         {
             speed = 100;
@@ -39,6 +27,7 @@ namespace DesignPatternProjekt
         {
             GameObject.Transform.Position += velocity;
         }
+
         public override void Start()
         {
             SpriteRenderer sr = GameObject.GetComponent<SpriteRenderer>() as SpriteRenderer;
@@ -46,6 +35,8 @@ namespace DesignPatternProjekt
             GameObject.Transform.Position = new Vector2(GameWorld.Instance.Graphics.PreferredBackBufferWidth / 2, GameWorld.Instance.Graphics.PreferredBackBufferHeight / 2);
 
         }
+
+        // Rotate the fortress towards the mouse
         public void Rotation()
         {
             currentMouse = Mouse.GetState();
@@ -53,6 +44,7 @@ namespace DesignPatternProjekt
             Vector2 mousePosistion = new Vector2(currentMouse.X, currentMouse.Y);
             Vector2 dPos = GameObject.Transform.Position - mousePosistion;
 
+            // Calculate the rotation
             rotation = (float)Math.Atan2(dPos.Y, dPos.X);
             GameObject.Transform.Rotation = rotation;
             Laser laserComponent = GameObject.GetComponent<Laser>() as Laser;
@@ -64,6 +56,8 @@ namespace DesignPatternProjekt
         }
 
         bool canShoot = true;
+
+        // Shoot a laser
         public void Shoot()
         {
             if (canShoot)
@@ -81,7 +75,7 @@ namespace DesignPatternProjekt
         float lastShot = 0;
         public override void Update(GameTime gameTime)
         {
-            //GameObject.Transform.Rotation += rotation;
+            // Move the fortress
             lastShot += GameWorld.Instance.DeltaTime;
             if (lastShot > shootTimer)
             {
