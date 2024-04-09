@@ -88,9 +88,9 @@ namespace DesignPatternProjekt
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             
-            EnemyFactory.SpawnEnemies(ENEMYTYPE.STRONG, 20);
-            EnemyFactory.SpawnEnemies(ENEMYTYPE.FAST, 20);
-            EnemyFactory.SpawnEnemies(ENEMYTYPE.SLOW, 20);
+            EnemyFactory.SpawnEnemies(ENEMYTYPE.STRONG, 3);
+            EnemyFactory.SpawnEnemies(ENEMYTYPE.FAST, 3);
+            EnemyFactory.SpawnEnemies(ENEMYTYPE.SLOW, 4);
 
             foreach (GameObject go in gameObjects)
             {
