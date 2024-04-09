@@ -21,10 +21,7 @@ namespace DesignPatternProjekt
             Components = new List<Component>();
         }
 
-        //public void AddComponent(Component component)
-        //{
-        //    Components.Add(component);
-        //}
+        
         public T AddComponent<T>(params object[] additionalParameters) where T : Component
         {
             Type componentType = typeof(T);
